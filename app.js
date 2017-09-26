@@ -1,6 +1,6 @@
 'use strict';
 
-var hours = ['6am - 7am', '7am - 8am', '8am - 9am', '9am - 10am', '10am - 11am', '11am - Noon', 'Noon - 1pm', '1pm - 2pm', '2pm - 3pm', '3pm - 4pm', '4pm - 5pm', '5pm - 6pm', '6pm - 7pm', '7pm - 8pm'];
+var hours = ['6am-7am', '7am-8am', '8am-9am', '9am-10am', '10am-11am', '11am-Noon', 'Noon-1pm', '1pm-2pm', '2pm-3pm', '3pm-4pm', '4pm-5pm', '5pm-6pm', '6pm-7pm', '7pm-8pm'];
 var arrayLength = hours.length;
 var i;
 console.log();
@@ -22,14 +22,17 @@ var pike = {
 
 for (i = 0; i < arrayLength; i++) {
     var liEl = document.createElement('li');
-    liEl.textContent = (hours[i] + ' - ' + pike.calculateHourlyCookies());
-//    document.appendChild(liEl);
+    pike.hourlyCookies = (pike.calculateHourlyCookies());
+    pike.totalCookies += pike.hourlyCookies;
+    liEl.textContent = (hours[i] + '  : ' + pike.hourlyCookies);
+    document.body.appendChild(liEl);
   };
 
-pike.calculateHourlyOrders();
-pike.calculateHourlyCookies();
+  var liEl = document.createElement('p');
+  liEl.textContent = ('Total Cookies : ' + pike.totalCookies);
+  document.body.appendChild(liEl);
 
-
+// document.getByElementId("ids").innerHTML=register();
 
 
 
