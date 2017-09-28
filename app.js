@@ -9,9 +9,9 @@ var hours = ['6am-7am', '7am-8am', '8am-9am', '9am-10am', '10am-11am', '11am-Noo
     this.maxCust = maxCust;
     this.avgOrder = avgOrder;
     this.cookiesSoldHourlyArray = [];
-    this.dailyTotal = 0;
     this.cookieSalesPerHour();
     // this.calculateDailyTotal();
+    this.dailyTotal = 0;
     allStores.push(this);
 }
 
@@ -26,7 +26,6 @@ Store.prototype.cookieSalesPerHour = function() {
 };
 
 Store.prototype.calculateDailyTotal = function() {
-
 }
 
   var pike = new Store('1st and Pike', 23, 65, 6.3);
