@@ -9,28 +9,25 @@ var hours = ['6am-7am', '7am-8am', '8am-9am', '9am-10am', '10am-11am', '11am-Noo
     this.maxCust = maxCust;
     this.avgOrder = avgOrder;
     this.cookiesSoldHourlyArray = [];
-    this.dailyInventory = 0;
+    this.dailyTotal = 0;
     this.cookieSalesPerHour();
+    // this.calculateDailyTotal();
     allStores.push(this);
 }
 
 Store.prototype.customersPerHour = function() {
   return (Math.floor(Math.random() * (this.maxCust - this.minCust) + 1) + this.minCust);
-}
+};
 
 Store.prototype.cookieSalesPerHour = function() {
   for (var i = 0; i < hours.length; i++) {
-  // var customersPerHour = this.customersPerHour();
     this.cookiesSoldHourlyArray.push(Math.ceil(this.customersPerHour() * this.avgOrder));
   }
+};
+
+Store.prototype.calculateDailyTotal = function() {
+
 }
-
-
-  // for(var i = 0; i < hours.length; i ++){
-// }
-// return this.storeSalesTable;
-// Store.prototype.render = function() {
-// }
 
   var pike = new Store('1st and Pike', 23, 65, 6.3);
   var seaTac = new Store('SeaTac', 3, 24, 1.2);
@@ -40,51 +37,51 @@ Store.prototype.cookieSalesPerHour = function() {
 console.log(pike, seaTac, seaCenter, capHill, alki);
 
 
-
-function makeHeaderRow() {
-// create tr
+Store.prototype.render = function() {
   var trEl = document.createElement('tr');
-// create th
   var thEl = document.createElement('th');
-// give th content (heading title)
+  thEl.textContent = this.location;
+  trEl.appendChild(thEl);
+
+  for (var i = 0; i < hours.length; i++) {
+    var tdEl = document.createElement('td');
+    tdEl.textContent = this.cookiesSoldHourlyArray[i];
+    trEl.appendChild(tdEl);
+  }
+
+
+  storeSalesTable.appendChild(trEl);
+};
+function makeHeaderRow() {
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
   thEl.textContent = 'Stores';
   trEl.appendChild(thEl);
 
-// give th content (heading title)
   for (var i = 0; i < hours.length; i++) {
-    var thEl = document.createElement('th');
+    thEl = document.createElement('th');
     thEl.textContent = (hours[i]);
     trEl.appendChild(thEl);
   }
-
-  var thEl = document.createElement('th');
-// give th content (heading title)
+  thEl = document.createElement('th');
   thEl.textContent = 'Daily Totals';
   trEl.appendChild(thEl);
   storeSalesTable.appendChild(trEl);
 }
-
-function makeDataRow() {
-
-}
-/*Store.prototype.render = function() {
-var trEL = document.createElement('tr');
-
-var tdEl = document.createElement('td');
-tdEl.textContent = this.cookiesSoldHourly;
-trEl.appendChild(tdEl);
-}
+// tdEl.textContent = this.cookiesSoldHourly;
+// trEl.appendChild(tdEl);
 
 /*this.hourlySalesArray = function() {
 for (var i = 0; i < hours.length; i++)
 thEl.textContent = (hours[i]);
 trEl.appendChild(thEl); */
 
-// function storeRowsFTW(storeRows) {
-//   for(var i in ) {
-//     [i].render();
-//   }
-// }
+function storeRowsFTW() {
+  for(var i in allStores) {
+    allStores[i].render();
+  }
+}
 
 makeHeaderRow();
-//storeRowsFTW();
+storeRowsFTW();
+// makeDataRow();
