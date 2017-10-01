@@ -1,30 +1,28 @@
 'use strict';
 var allStores = [];
-var storeSalesTable = document.getElementById('salesTable')
+var storeSalesTable = document.getElementById('salesTable');
 var hours = ['6am-7am', '7am-8am', '8am-9am', '9am-10am', '10am-11am', '11am-Noon', 'Noon-1pm', '1pm-2pm', '2pm-3pm', '3pm-4pm', '4pm-5pm', '5pm-6pm', '6pm-7pm', '7pm-8pm'];
 
-  function Store(location, minCust, maxCust, avgOrder) {
-    this.location = location;
-    this.minCust = minCust;
-    this.maxCust = maxCust;
-    this.avgOrder = avgOrder;
-    this.customersPerHourArray = [];
-    this.cookiesSoldHourlyArray = [];
-    this.calculateDailyTotal = 0;
-    this.customersPerHour();
-    this.cookieSalesPerHour();
-    // this.calculateDailyTotal();
-    allStores.push(this);
+function Store(location, minCust, maxCust, avgOrder) {
+  this.location = location;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgOrder = avgOrder;
+  this.customersPerHourArray = [];
+  this.cookiesSoldHourlyArray = [];
+  this.calculateDailyTotal = 0;
+  this.customersPerHour();
+  this.cookieSalesPerHour();
+  allStores.push(this);
 }
 
 Store.prototype.customersPerHour = function() {
   for (var i = 0; i < hours.length; i++) {
-  this.customersPerHourArray.push(Math.ceil(Math.random() * (this.maxCust - this.minCust) + 1) + this.minCust);
-}
+    this.customersPerHourArray.push(Math.ceil(Math.random() * (this.maxCust - this.minCust) + 1) + this.minCust);
+  }
 };
 
 Store.prototype.cookieSalesPerHour = function() {
-  this.customersPerHour();
   this.calculateDailyTotal = 0;
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.ceil(this.customersPerHourArray[i] * this.avgOrder);
@@ -40,11 +38,7 @@ var capHill = new Store('Capitol Hill', 20, 38, 2.3);
 var alki = new Store('Alki', 2, 16, 4.6);
 console.log(pike, seaTac, seaCenter, capHill, alki);
 
-// Store.prototype.calculateDailyTotal = function() {
-//   for (var i = 0; i < allStores.length; i++) {
-//
-//   }
-
+//Table Header Row Section
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
@@ -56,6 +50,7 @@ function makeHeaderRow() {
     thEl.textContent = (hours[i]);
     trEl.appendChild(thEl);
   }
+
   thEl = document.createElement('th');
   thEl.textContent = 'Daily Totals';
   trEl.appendChild(thEl);
@@ -75,14 +70,14 @@ Store.prototype.render = function() {
     trEl.appendChild(tdEl);
   }
 
-  for (i = 0; i < hours.length; i++)
+  for (i = 0; i < hours.length; i++);
   tdEl = document.createElement('th');
   tdEl.textContent = this.calculateDailyTotal;
   trEl.appendChild(tdEl);
 
   storeSalesTable.appendChild(trEl);
 };
-//Make Footer Row
+//Table Footer Row Section
 function makeFooterRow() {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
@@ -92,24 +87,23 @@ function makeFooterRow() {
   var totalofTotals = 0;
   var hourlyTotal = 0;
   for (var i = 0; i < hours.length; i++) {
+    hourlyTotal = 0;
     for (var j = 0; j < allStores.length; j++) {
       hourlyTotal += allStores[j].cookiesSoldHourlyArray[i];
       totalofTotals += allStores[j].cookiesSoldHourlyArray[i];
-      thEl = document.createElement ('th');
-      thEl.textContent = 'test';
-      trEl.appendChild(thEl);
     }
+    thEl = document.createElement ('th');
+    thEl.textContent = hourlyTotal;
+    trEl.appendChild(thEl);
   }
+
+  for (var i = 0; i < hours.length; i++)
+  thEl = document.createElement ('th');
+  thEl.textContent = totalofTotals;
+  trEl.appendChild(thEl);
+
   storeSalesTable.appendChild(trEl);
 }
-
-// tdEl.textContent = this.cookiesSoldHourly;
-// trEl.appendChild(tdEl);
-
-/*this.hourlySalesArray = function() {
-for (var i = 0; i < hours.length; i++)
-thEl.textContent = (hours[i]);
-trEl.appendChild(thEl); */
 
 function storeRowsFTW() {
   for(var i in allStores) {
@@ -120,4 +114,4 @@ function storeRowsFTW() {
 makeHeaderRow();
 storeRowsFTW();
 makeFooterRow();
-// makeDataRow();
+//I paid my dues on this!
