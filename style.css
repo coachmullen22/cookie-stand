@@ -1,0 +1,38 @@
+* {
+  border: 1px solid rgb(213, 114, 114);
+  margin: 0;
+  background-color: rgb(110, 75, 0);
+}
+
+#page1 header {
+  height: 445px;
+  text-align: center;
+  background-color: rgb(65, 45, 0);
+}
+
+#page2 header {
+  height: 90px;
+  text-align: center;
+}
+h2 {
+  background-color: (40, 80, 215);
+  margin: 5px;
+  margin-bottom: 0px;
+}
+
+header img {
+  background-color: (40, 80, 215);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20%;
+}
+
+nav {
+  margin: 5px;
+}
+nav ul li {
+  background-color: (40, 200, 0);
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+}
