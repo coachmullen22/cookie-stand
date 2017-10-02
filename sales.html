@@ -3,14 +3,39 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="style.css">
-  <title>Salmon Cookies Sales Data</title>
+  <title>Pat's Salmon Cookies Sales Data</title>
 </head>
-<body>
+
+<header>
   <h1>Salmon Cookies Sales Data</h1>
+  <h2>Fresh Fish ~ Baked Fresh</h2>
+</header>
+<body id="page2">
+  <div class="myDiv"></div>
 
-<table id = "salesTable"></table>
+  <table id = "salesTable"></table>
+  <form id="edit-stores">
+    <fieldset>
+      <legend>Store Information Editor</legend>
 
+      <label for="store">Store: </label>
+      <input location="store" type="text" />
+
+      <label for="minCust">Min. Customers Per Hour: </label>
+      <input location="store" type="text" />
+
+      <label for="maxCust">Max. Customers Per Hour: </label>
+      <input location="store" type="text" />
+
+      <label for="avgOrder">Average Order Qty.: </label>
+      <input location="store" type="text" />
+
+      <button type="addEdit">Add/Edit Existing Store</button>
+      <button type="disable">Disable Store (temp)</button>
+      <button type+"remove">Delete Store</button>
+
+    </fieldset>
+  </form>
+<script src="app.js"></script>
 </body>
-<script src="app.js">
-</script>
 </html>

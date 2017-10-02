@@ -114,4 +114,5 @@ function storeRowsFTW() {
 makeHeaderRow();
 storeRowsFTW();
 makeFooterRow();
-//I paid my dues on this!
+
+//
